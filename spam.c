@@ -8,6 +8,7 @@ struct word
 char words[30];
 int spam_word;
 int ham_word;
+float sbyw;
 };
 
 struct word_test //struct to store the testing values
@@ -30,6 +31,7 @@ void main()
 	{
 		learn[i].spam_word=0;
 		learn[i].ham_word=0;
+		learn[i].sbyw=0;
 	}	
 	int struct_control=0;
 	while(br!=1)
@@ -78,7 +80,10 @@ void main()
 			temp[temp_control]=lr[j];
 			temp_control=temp_control+1;
 			help:
-			printf("");
+				printf("");
+			
+			
+			
 			
 		}		
 
@@ -95,6 +100,29 @@ void main()
 	
 //testing phase 
 //for loop required if we need to test multiple emails
+	//edit  this part is where we calculate and store the p(s/w) of all the words
+	//to calculat the total number of spam words
+	int total_spam=0,total_ham;
+	for(int j=0;learn[j].ham_word||learn[j].spam_word !=0;j=j+1)
+	{
+		total_spam=total_spam+learn[j].spam_word;
+	}
+	
+	for(int j=0;learn[j].ham_word||learn[j].spam_word !=0;j=j+1)
+	{
+		int s=3;
+		float n,wbys,wbyh,temp;
+		n=learn[j].ham_word+learn[j].ham_word;
+		printf("888888%s88888888888",learn[j].words);
+		wbys=(learn[j].spam_word/total_spam);
+		wbyh=learn[j].ham_word/total_ham;
+		temp=(wbys/(wbys+wbyh));
+		learn[j].sbyw=((3*0.5)+(n*temp))/(3+n);
+		printf("******************%f************",learn[j].sbyw);
+		
+	}
+	//edit
+	
 	
 	br=0;
 	while(br!=1)
@@ -171,7 +199,8 @@ void main()
 		for(int k=0;k<test_control;k=k+1)
 		printf("The words are:%s\nFrequency:%d\nSpam occurence:%d\nHam occurence:%d\n\n",test[k].words,test[k].freq,test[k].spamfreq,test[k].hamfreq);
 //edit
-	
+		//Now for the main part as in calculating the probability of everything
+		
 	
 	
 	
