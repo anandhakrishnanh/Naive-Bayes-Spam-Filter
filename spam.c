@@ -100,25 +100,39 @@ void main()
 	
 //testing phase 
 //for loop required if we need to test multiple emails
-	//edit  this part is where we calculate and store the p(s/w) of all the words
+	//edit  
+	//this part is where we calculate and store the p(s/w) of all the words
+	
 	//to calculat the total number of spam words
-	int total_spam=0,total_ham;
+	int total_spam=0;
+	int total_ham=0;
 	for(int j=0;learn[j].ham_word||learn[j].spam_word !=0;j=j+1)
 	{
 		total_spam=total_spam+learn[j].spam_word;
+		total_ham=total_ham+learn[j].ham_word;
+		printf("Total Spam words=%d\nTotal Ham Words=%d\n",total_spam,total_ham);
+//total ham words seem to be 0 for some reason
 	}
-	
+	//this is not p'(s/w) but just p(s/w) 
 	for(int j=0;learn[j].ham_word||learn[j].spam_word !=0;j=j+1)
 	{
-		int s=3;
+				
+		
+		
 		float n,wbys,wbyh,temp;
-		n=learn[j].ham_word+learn[j].ham_word;
-		printf("888888%s88888888888",learn[j].words);
-		wbys=(learn[j].spam_word/total_spam);
-		wbyh=learn[j].ham_word/total_ham;
-		temp=(wbys/(wbys+wbyh));
-		learn[j].sbyw=((3*0.5)+(n*temp))/(3+n);
-		printf("******************%f************",learn[j].sbyw);
+		
+		
+		
+	
+		printf("\n%s\n",learn[j].words);
+	//0 might occur in the denominator and mess things up 
+	// i think that error is fixed but not too sure
+		wbys=(((float)learn[j].spam_word)/(float)total_spam);
+		wbyh=((float)learn[j].ham_word)/(float)total_ham;
+		learn[j].sbyw=(wbys/(wbys+wbyh));
+	  	printf("\n%d/%d=%f\n",learn[j].spam_word,total_spam,wbys);
+	  	printf("\n%d/%d=%f\n",learn[j].ham_word,total_ham,wbyh)
+		printf("\nw/s=%f  w/h=%f  s/w=%f\n",wbys,wbyh,learn[j].sbyw);
 		
 	}
 	//edit
@@ -210,7 +224,7 @@ void main()
 	
 	
 	
-	
+		
 		printf("\nDo you want to continue testing\nPress 1:STOP and Press 0:Continue testing\n");
 		scanf("%d",&br);	
 	}
