@@ -46,3 +46,4 @@ Now using the frequency we calculate the probability
 		printf("\n%d/%d=%f\n",test[j].spamfreq,total_spam,wbys);
 	  	printf("\n%d/%d=%f\n",test[j].hamfreq,total_ham,wbyh);
 		printf("\nw/s=%f  w/h=%f  prob=%f\n",wbys,wbyh,prob[j]);
+
