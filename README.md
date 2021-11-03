@@ -74,9 +74,9 @@ spam or not using the already set of words it has seen in the training phase.
 ```
 strcpy(learn[struct_control].words,temp);
 if(spamorham==1)
-learn[struct_control].spam_word=learn[struct_control].spam_word+1;
+    learn[struct_control].spam_word=learn[struct_control].spam_word+1;
 else
-learn[struct_control].ham_word=learn[struct_control].ham_word+1;
+    learn[struct_control].ham_word=learn[struct_control].ham_word+1;
 temp_control=0;
 struct_control=struct_control+1;
 memset(temp, NULL, sizeof temp);
